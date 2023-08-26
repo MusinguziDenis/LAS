@@ -15,5 +15,5 @@ This folder contains the config files that define the hyperparameters and other 
 
 ### Usage
 All scripts should be executed from the parent folder LAS.  
-Download and unzip the dataset into a data folder. Use python main.py to run the model. Use the config.yaml file to change model parameters
+Download and unzip the dataset into a data folder. Use ```python main.py``` to run the model. Use the config.yaml file to change model parameters
 
