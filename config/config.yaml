@@ -1,0 +1,11 @@
+batch_size: 128
+lr: 1e-4
+epochs: 50
+max_timesteps: 550
+speller_hidden_size: 320
+speller_embedding_dim: 256
+speller_hidden_size: 512
+listener_hidden_size: 512
+projection_size: 128
+checkpoint_path: '/home/ubuntu/model/best_las.pth'
+epoch_checkpoint_path: '/home/ubuntu/model/epoch_las.pth'

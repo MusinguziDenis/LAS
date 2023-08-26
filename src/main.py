@@ -8,36 +8,17 @@ import pandas as pd
 import time
 from torch.utils.data import DataLoader
 import wandb
+from src.utils import VOCAB, PAD_TOKEN, DEVICE
+from src.dataloader import SpeechDataset, TestSpeechDataset
+from src.models import LAS
+from src.train_test import train, validate, inference, save_model, plot_attention
+from src.utils import VOCAB, PAD_TOKEN, DEVICE, load_config
+
 import warnings
 warnings.filterwarnings("ignore")
 
 
-
-from dataloader import SpeechDataset, TestSpeechDataset
-from models import LAS
-from train_test import train, validate, inference, save_model, plot_attention
-DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
-
-VOCAB = ['<pad>', '<sos>', '<eos>', 'A',   'B',    'C',    'D', 'E',   'F',    'G',    'H',    
-         'I',   'J',    'K',    'L', 'M',   'N',    'O',    'P', 'Q',   'R',    'S',    'T', 
-         'U',   'V',    'W',    'X', 'Y',   'Z',    "'",    ' ',]
-
-VOCAB_MAP = {VOCAB[i]:i for i in range(0, len(VOCAB))}
-PAD_TOKEN = VOCAB_MAP["<pad>"]
-
-config = {
-  'batch_size': 128,
-  'lr':1e-4,
-  'epochs': 50,
-  'listener_hidden_size':320,
-  'speller_embedding_dim': 256,
-  'speller_hidden_size' : 512,
-  'speller_hidden_dim': 512,
-  'projection_size': 128,
-  'max_timesteps':550,
-  'checkpoint_path': '/home/ubuntu/model/best_las.pth',
-  'epoch_checkpoint_path': '/home/ubuntu/model/epoch_las.pth'
-}
+config = load_config()
 
 
 # Get dataloaders
