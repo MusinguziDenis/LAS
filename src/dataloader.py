@@ -3,17 +3,8 @@ import numpy as np
 import os
 from torch.utils.data import Dataset, DataLoader
 from torch.nn.utils.rnn import pad_sequence, pack_padded_sequence, pad_packed_sequence
+from src.utils import VOCAB, PAD_TOKEN, DEVICE
 
-
-VOCAB = ['<pad>', '<sos>', '<eos>', 'A',   'B',    'C',    'D', 'E',   'F',    'G',    'H',    
-         'I',   'J',    'K',    'L', 'M',   'N',    'O',    'P', 'Q',   'R',    'S',    'T', 
-         'U',   'V',    'W',    'X', 'Y',   'Z',    "'",    ' ',]
-
-VOCAB_MAP = {VOCAB[i]:i for i in range(0, len(VOCAB))}
-
-PAD_TOKEN = VOCAB_MAP["<pad>"]
-SOS_TOKEN = VOCAB_MAP["<sos>"]
-EOS_TOKEN = VOCAB_MAP["<eos>"]
 
 root = "/home/ubuntu"
 
